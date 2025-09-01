@@ -1,48 +1,10 @@
-@extends('layouts.app')
+<x-layout :title="'KiM – Compose avec ce que tu as'" :meta="'Anti-gaspillage et cuisine solidaire. Indique ce que tu as, on te propose des recettes.'">
+  <x-header />
 
-@section('title','KiM – Compose avec ce que tu as')
-
-@section('content')
-  <!-- =================== HEADER =================== -->
-  <header id="top" class="site-header">
-    <div class="container">
-      <div class="navbar">
-        <a href="{{ url('/') }}" class="brand" aria-label="Accueil KiM">
-          <span class="logo">KiM</span>
-          <span>Kossà I Mange</span>
-        </a>
-        <nav aria-label="Navigation principale">
-          <ul>
-            <li><a href="#apropos">À propos</a></li>
-            <li><a href="#recettes">Recettes</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <div style="display:flex; align-items:center; gap:8px">
-          <button id="ctaRecipes" class="cta-small">Voir les recettes</button>
-          <button class="menu-btn" aria-label="Ouvrir le menu" id="menuBtn">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile menu -->
-      <div class="mobile-panel" id="mobilePanel" role="dialog" aria-label="Menu mobile">
-        <div class="container" style="padding:0">
-          <a href="#apropos" onclick="scrollToId('apropos')">À propos</a>
-          <a href="#recettes" onclick="scrollToId('recettes')">Recettes</a>
-          <a href="#contact" onclick="scrollToId('contact')">Contact</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- =================== HERO =================== -->
   <main>
     <section class="hero">
       <div class="container">
         <div class="hero-grid">
-          <!-- Colonne gauche -->
           <div>
             <span class="eyebrow">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 21c14 0 14-14 14-14S7 7 5 21Zm0 0c0-4 2-6 6-6"/></svg>
@@ -81,52 +43,13 @@
             </div>
           </div>
 
-          <!-- Colonne droite : Suggestions -->
           <aside aria-label="Suggestions du jour">
             <div class="section" style="padding-top:0">
               <h2 style="margin-bottom:10px">Suggestions rapides</h2>
               <div class="grid">
-                <article class="card">
-                  <img class="thumb" src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?q=80&w=1200&auto=format&fit=crop" alt="Gratin de pâtes doré au four">
-                  <div class="card-body">
-                    <div class="row">
-                      <span class="title">Gratin de pâtes</span>
-                      <span class="badge">
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20l9-16H3z"/></svg>
-                        100% dispo
-                      </span>
-                    </div>
-                    <div class="meta"><span>30 min</span> • <span>Facile</span></div>
-                  </div>
-                </article>
-
-                <article class="card">
-                  <img class="thumb" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop" alt="Salade de riz colorée">
-                  <div class="card-body">
-                    <div class="row">
-                      <span class="title">Salade de riz</span>
-                      <span class="badge">
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15A8 8 0 1 1 15 4.6"/></svg>
-                        Manque 1
-                      </span>
-                    </div>
-                    <div class="meta"><span>15 min</span> • <span>Facile</span></div>
-                  </div>
-                </article>
-
-                <article class="card">
-                  <img class="thumb" src="https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=1200&auto=format&fit=crop" alt="Curry de légumes en cocotte">
-                  <div class="card-body">
-                    <div class="row">
-                      <span class="title">Curry de légumes</span>
-                      <span class="badge">
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
-                        Anti-gaspi
-                      </span>
-                    </div>
-                    <div class="meta"><span>40 min</span> • <span>Intermédiaire</span></div>
-                  </div>
-                </article>
+                <x-recipe-card title="Gratin de pâtes" time="30" difficulty="Facile" image="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?q=80&w=1200&auto=format&fit=crop" href="{{ route('recipes.show','gratin-de-pates') }}" />
+                <x-recipe-card title="Salade de riz" time="15" difficulty="Facile" image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop" href="{{ route('recipes.show','salade-de-riz') }}" />
+                <x-recipe-card title="Curry de légumes" time="40" difficulty="Intermédiaire" image="https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=1200&auto=format&fit=crop" href="{{ route('recipes.show','curry-de-legumes') }}" />
               </div>
             </div>
           </aside>
@@ -134,7 +57,6 @@
       </div>
     </section>
 
-    <!-- =================== HIGHLIGHTS =================== -->
     <section id="apropos" class="section">
       <div class="container">
         <h2>Pourquoi KiM ?</h2>
@@ -167,68 +89,17 @@
       </div>
     </section>
 
-    <!-- =================== LIST PREVIEW =================== -->
     <section id="recettes" class="section">
       <div class="container">
         <h2>Recettes populaires</h2>
         <div class="grid" role="list">
-          <article class="card" role="listitem">
-            <img class="thumb" src="https://images.unsplash.com/photo-1514512364185-4c2b2b3f1a3a?q=80&w=1200&auto=format&fit=crop" alt="Soupe à l’oignon gratinée">
-            <div class="card-body"><div class="row"><span class="title">Soupe à l’oignon</span><span class="meta">25 min • Facile</span></div></div>
-          </article>
-          <article class="card" role="listitem">
-            <img class="thumb" src="https://images.unsplash.com/photo-1546069901-5ec6a79120b0?q=80&w=1200&auto=format&fit=crop" alt="Omelette dorée">
-            <div class="card-body"><div class="row"><span class="title">Omelette express</span><span class="meta">10 min • Facile</span></div></div>
-          </article>
-          <article class="card" role="listitem">
-            <img class="thumb" src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1200&auto=format&fit=crop" alt="Pâtes tomate basilic">
-            <div class="card-body"><div class="row"><span class="title">Pâtes tomate basilic</span><span class="meta">18 min • Facile</span></div></div>
-          </article>
-          <article class="card" role="listitem">
-            <img class="thumb" src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?q=80&w=1200&auto=format&fit=crop" alt="Lentilles aux carottes">
-            <div class="card-body"><div class="row"><span class="title">Lentilles carottes</span><span class="meta">40 min • Intermédiaire</span></div></div>
-          </article>
-          <article class="card" role="listitem">
-            <img class="thumb" src="https://images.unsplash.com/photo-1526318472351-c75fcf070305?q=80&w=1200&auto=format&fit=crop" alt="Poêlée de légumes">
-            <div class="card-body"><div class="row"><span class="title">Poêlée de légumes</span><span class="meta">20 min • Facile</span></div></div>
-          </article>
-          <article class="card" role="listitem">
-            <img class="thumb" src="https://images.unsplash.com/photo-1543352634-8730b1f1c31a?q=80&w=1200&auto=format&fit=crop" alt="Pain perdu sucré">
-            <div class="card-body"><div class="row"><span class="title">Pain perdu</span><span class="meta">12 min • Facile</span></div></div>
-          </article>
+          @foreach(range(1,6) as $i)
+            <x-recipe-card :title="'Recette ' . $i" :time="10+$i" difficulty="Facile" :image="'https://placehold.co/800x500?text=Recette+' . $i" :href="route('recipes.show','recette-'.$i)" />
+          @endforeach
         </div>
-      </div>
-    </section>
-
-    <!-- =================== CTA =================== -->
-    <section class="section">
-      <div class="container" style="text-align:center">
-        <h2>Prêt à cuisiner malin ?</h2>
-        <p style="color:#6b7280; max-width:720px; margin: 6px auto 18px">
-          Ajoute tes ingrédients et découvre des centaines d’idées adaptées à ton placard.
-        </p>
-        <button id="ctaTop" class="cta-large">Je compose mon menu maintenant</button>
       </div>
     </section>
   </main>
 
-  <!-- =================== FOOTER =================== -->
-  <footer id="contact" class="container">
-    <div class="foot">
-      <div style="display:flex; align-items:center; gap:10px">
-        <span class="logo" aria-hidden="true">KiM</span>
-        <div>
-          <strong style="color:#111827">Kossà I Mange</strong><br>
-          <small>© <span id="y"></span> – Moins de gaspillage, plus de partage.</small>
-        </div>
-      </div>
-      <div>
-        <small>
-          <a href="#apropos" style="color:#6b7280; text-decoration:none; margin-right:12px">À propos</a>
-          <a href="#recettes" style="color:#6b7280; text-decoration:none; margin-right:12px">Recettes</a>
-          <a href="mailto:contact@kim.example" style="color:#6b7280; text-decoration:none">contact@kim.example</a>
-        </small>
-      </div>
-    </div>
-  </footer>
-@endsection
+  <x-footer />
+</x-layout>

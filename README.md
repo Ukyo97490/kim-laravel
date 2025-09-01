@@ -1,20 +1,26 @@
-# KIM Front (Laravel Drop-in)
+# KiM Laravel (Blade Components)
 
-Ce zip contient :
-- `resources/views/layouts/app.blade.php` : layout de base (fonts + CSS/JS).
-- `resources/views/home.blade.php` : page d’accueil responsive.
-- `public/css/app.css` et `public/js/app.js` : styles et scripts extraits.
-- `routes/web.php` : route `/` qui renvoie la home (closure).
+**Contenu :**
+- `resources/views/components/layout.blade.php` → composant `<x-layout>` (head + assets + slots)
+- `resources/views/components/header.blade.php` → `<x-header>`
+- `resources/views/components/footer.blade.php` → `<x-footer>`
+- `resources/views/components/recipe-card.blade.php` → `<x-recipe-card>`
+- Pages : `home.blade.php`, `about.blade.php`, `recipes/index.blade.php`, `recipes/show.blade.php`, `contact.blade.php`
+- Assets : `public/css/app.css`, `public/js/app.js`
+- Routes : `routes/web.php` (accueil, à-propos, recettes index/show, contact)
 
-## Installation rapide
+## Installation
+1. Dézippe à la **racine** de ton projet Laravel (accepte d’écraser `routes/web.php` si besoin).
+2. Lance : `php artisan serve`
+3. URLs : `/`, `/a-propos`, `/recettes`, `/recettes/recette-1`, `/contact`
 
-1) Dézippe **dans la racine** de ton projet Laravel (écrase si demandé).
-2) Lance le serveur :
-```bash
-php artisan serve
+## Utilisation des composants
+```blade
+<x-layout :title="$title" :meta="$desc">
+  <x-header />
+  <!-- ton contenu -->
+  <x-footer />
+</x-layout>
+
+<x-recipe-card title="Curry de légumes" time="35" difficulty="Facile" image="..." href="..." />
 ```
-3) Ouvre `http://127.0.0.1:8000/` → tu dois voir la homepage KIM.
-
-### Notes
-- Tu peux déplacer les assets vers Vite plus tard. Ici on utilise `public/` pour la simplicité.
-- Pour brancher la recherche : remplace dans `public/js/app.js` la ligne commentaire par `location.href = '/recettes?'+params.toString();` et crée la route.
