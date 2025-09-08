@@ -45,6 +45,7 @@
 
           <aside aria-label="Suggestions du jour">
             <div class="section" style="padding-top:0">
+              {{-- Ici on va récupérer les 3 dernières recettes ajouter en bdd  --}}
               <h2 style="margin-bottom:10px">Suggestions rapides</h2>
               <div class="grid">
                 <x-recipe-card title="Gratin de pâtes" time="30" difficulty="Facile" image="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?q=80&w=1200&auto=format&fit=crop" href="{{ route('recipes.show','gratin-de-pates') }}" />
