@@ -5,7 +5,7 @@
     <section class="hero">
       <div class="container">
         <h1>Contact</h1>
-        <p class="meta">Une question, une idée, un don ? Écris-nous.</p>
+        <p class="meta">Une question, une idée ? Écris-nous.</p>
 
         <form class="search-card" method="POST" action="#">
           @csrf

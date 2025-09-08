@@ -402,3 +402,32 @@ footer {
         animation: none;
     }
 }
+/* Container actions droite */
+.header-actions { display:flex; align-items:center; gap:8px; }
+
+/* Cacher certains éléments sur mobile */
+.only-desktop { display:flex; gap:8px; }
+@media (max-width: 900px){
+  .only-desktop { display:none; }           /* cache les boutons inline */
+}
+
+/* Boutons d'auth jolis dans le menu mobile */
+.btn-auth{
+  display:block;
+  width:100%;
+  padding:12px 14px;
+  margin-top:8px;
+  text-align:center;
+  font-weight:700;
+  border-radius:12px;
+  background: var(--red);
+  color:#fff;
+  text-decoration:none;
+  border:none;
+}
+.btn-auth:hover { filter:brightness(0.95); }
+.btn-green{ background: var(--green); }
+.btn-dark{ background:#374151; }
+
+/* S’assure que le <button> de logout ressemble au lien */
+.mobile-panel form .btn-auth{ width:100%; }
