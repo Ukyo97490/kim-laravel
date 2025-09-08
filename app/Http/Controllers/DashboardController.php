@@ -10,3 +10,15 @@ class DashboardController extends Controller
         return view('dashboard', compact('user','recipes'));
     }
 }
+    // {
+    //     $user = Auth::user();
+    
+    //     return view('dashboard', [
+    //         'user' => $user,
+    //         'countPublished' => Recipe::where('user_id',$user->id)->where('status','published')->count(),
+    //         'countPending'   => Recipe::where('user_id',$user->id)->where('status','pending')->count(),
+    //         'countDraft'     => Recipe::where('user_id',$user->id)->where('status','draft')->count(),
+    //         'recipes'        => Recipe::where('user_id',$user->id)->latest()->paginate(12),
+    //     ]);
+    // }
+
